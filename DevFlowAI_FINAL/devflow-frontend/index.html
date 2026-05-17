@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevFlow AI — IBM BOB Powered Development Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════ NAVBAR ══════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" onclick="showPage('landing')">
+      <div class="logo-mark">DF</div>
+      <span class="logo-text">Dev<span>Flow</span> AI</span>
+      <span class="nav-badge">IBM BOB</span>
+    </a>
+    <div class="nav-links">
+      <button class="nav-link" onclick="showPage('landing')">Home</button>
+      <button class="nav-link" onclick="showPage('dashboard')">Dashboard</button>
+      <button class="nav-link" onclick="showPage('ai')">AI Assistant</button>
+      <button class="nav-link" onclick="showPage('workspace')">Workspace</button>
+      <button class="nav-link" onclick="showPage('deploy')">Deploy</button>
+      <button class="nav-link" onclick="showPage('analytics')">Analytics</button>
+      <button class="nav-link" onclick="showPage('settings')">Settings</button>
+    </div>
+    <div class="nav-right">
+      <span id="backend-status" style="font-size:11px;color:#666;margin-right:8px;display:none;">checking...</span>
+      <button class="btn-ghost" onclick="showPage('login')">Sign in</button>
+      <button class="nav-cta" onclick="showPage('signup')">Get Started →</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════ LANDING PAGE ══════════════════════ -->
+<div class="page active" id="page-landing">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-content fade-up">
+      <div class="ibm-badge">⚡ Built with IBM BOB · IBM BOB Hackathon 2026</div>
+      <h1>
+        <span class="line1">Your AI-Powered</span>
+        <span class="line2">Development Partner</span>
+      </h1>
+      <p class="hero-sub">DevFlow AI transforms any GitHub repository into an instantly understandable, well-documented, and continuously improvable project — in under 60 seconds.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('signup')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Start for Free
+        </button>
+        <button class="btn-secondary" onclick="showPage('dashboard')">View Live Demo →</button>
+      </div>
+      <div class="hero-stats stagger">
+        <div class="hero-stat"><div class="hero-stat-num"><span>60</span>s</div><div class="hero-stat-label">Repo Analysis Time</div></div>
+        <div class="hero-stat"><div class="hero-stat-num"><span>10</span>x</div><div class="hero-stat-label">Faster Onboarding</div></div>
+        <div class="hero-stat"><div class="hero-stat-num"><span>$15</span>B</div><div class="hero-stat-label">Market Opportunity</div></div>
+        <div class="hero-stat"><div class="hero-stat-num"><span>∞</span></div><div class="hero-stat-label">Repositories Supported</div></div>
+      </div>
+    </div>
+
+    <!-- Dashboard Preview Mockup -->
+    <div class="dashboard-preview fade-in" style="animation-delay:0.2s">
+      <div class="preview-frame">
+        <div class="preview-topbar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="preview-url">app.devflow.ai/dashboard</div>
+        </div>
+        <div class="preview-body">
+          <div class="preview-sidebar">
+            <div class="preview-sidebar-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Dashboard
+            </div>
+            <div class="preview-sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              AI Assistant
+            </div>
+            <div class="preview-sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              Repositories
+            </div>
+            <div class="preview-sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Analytics
+            </div>
+          </div>
+          <div class="preview-main">
+            <div class="preview-row">
+              <div class="preview-card"><div class="preview-card-label">Repos Analyzed</div><div class="preview-card-val">247</div><div class="preview-card-delta">↑ 12 this week</div></div>
+              <div class="preview-card"><div class="preview-card-label">Docs Generated</div><div class="preview-card-val">1,834</div><div class="preview-card-delta">↑ 98 today</div></div>
+              <div class="preview-card"><div class="preview-card-label">Bugs Detected</div><div class="preview-card-val">512</div><div class="preview-card-delta" style="color:var(--red)">34 fixed today</div></div>
+            </div>
+            <div class="preview-ai-box">
+              <div class="ai-label">IBM BOB AI · Active</div>
+              <div class="ai-text">Analyzed <span class="hl">react-dashboard</span> repository. Found <span class="hl">3 critical issues</span> in authentication module. README generated with <span class="hl">94% accuracy</span>. Suggest refactoring <span class="hl">useAuth.tsx</span>.</div>
+              <div class="chart-bars" style="margin-top:12px">
+                <div class="bar" style="height:30%;animation-delay:0.1s"></div>
+                <div class="bar" style="height:60%;animation-delay:0.15s"></div>
+                <div class="bar" style="height:45%;animation-delay:0.2s"></div>
+                <div class="bar" style="height:80%;animation-delay:0.25s"></div>
+                <div class="bar" style="height:55%;animation-delay:0.3s"></div>
+                <div class="bar" style="height:90%;animation-delay:0.35s"></div>
+                <div class="bar" style="height:70%;animation-delay:0.4s"></div>
+                <div class="bar" style="height:85%;animation-delay:0.45s"></div>
+                <div class="bar" style="height:65%;animation-delay:0.5s"></div>
+                <div class="bar" style="height:95%;animation-delay:0.55s"></div>
+                <div class="bar" style="height:75%;animation-delay:0.6s"></div>
+                <div class="bar" style="height:50%;animation-delay:0.65s"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="text-center" style="margin-bottom:60px">
+      <div class="section-badge">Core Features</div>
+      <h2 class="section-title">Everything Your Team Needs</h2>
+      <p class="section-sub">Powered by IBM BOB, DevFlow AI delivers intelligent insights across every stage of your development workflow.</p>
+    </div>
+    <div class="features-grid stagger">
+      <div class="feature-card"><div class="feature-icon">🔍</div><div class="feature-title">Repository Analysis</div><div class="feature-desc">Deep AI-powered structural scanning of any GitHub codebase. Understand architecture, dependencies, and patterns in seconds.</div><div class="feature-tag">IBM BOB Powered</div></div>
+      <div class="feature-card"><div class="feature-icon">💬</div><div class="feature-title">Chat with Codebase</div><div class="feature-desc">Ask natural language questions about any repository. Get instant contextual answers with code references and explanations.</div><div class="feature-tag">RAG Architecture</div></div>
+      <div class="feature-card"><div class="feature-icon">📄</div><div class="feature-title">README Generator</div><div class="feature-desc">Auto-generates professional, structured READMEs. Inline documentation created automatically from your code structure.</div><div class="feature-tag">Auto-Generated</div></div>
+      <div class="feature-card"><div class="feature-icon">🐛</div><div class="feature-title">Bug Detection</div><div class="feature-desc">Proactive detection of issues, anti-patterns, and security vulnerabilities before they reach production.</div><div class="feature-tag">Static Analysis</div></div>
+      <div class="feature-card"><div class="feature-icon">⚡</div><div class="feature-title">Code Explanation</div><div class="feature-desc">Plain-English breakdowns of complex functions, algorithms, and design patterns. Perfect for onboarding new developers.</div><div class="feature-tag">LLM Enhanced</div></div>
+      <div class="feature-card"><div class="feature-icon">🚀</div><div class="feature-title">AI Code Review</div><div class="feature-desc">Automated PR reviews with quality scoring, improvement suggestions, and architectural feedback on every commit.</div><div class="feature-tag">Coming Soon</div></div>
+    </div>
+  </section>
+
+  <!-- Workflow -->
+  <section class="section">
+    <div class="section-badge">How It Works</div>
+    <h2 class="section-title">From URL to Insights in <span class="gradient-text">60 Seconds</span></h2>
+    <div class="workflow">
+      <div class="workflow-step">
+        <div class="workflow-info">
+          <div class="workflow-num">01 — Connect</div>
+          <h3 class="workflow-title">One-Click GitHub Integration</h3>
+          <p class="workflow-desc">Paste any public or private GitHub URL. DevFlow AI connects instantly via GitHub OAuth, with zero configuration required.</p>
+          <ul class="workflow-bullets"><li>Public & private repository support</li><li>GitHub OAuth in one click</li><li>Organization and personal repos</li></ul>
+        </div>
+        <div class="workflow-visual">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--text-3);margin-bottom:10px">REPOSITORY URL</div>
+          <div style="background:var(--card);border:1px solid var(--border-sm);border-radius:8px;padding:12px 16px;font-family:var(--mono);font-size:13px;color:var(--cyan);display:flex;align-items:center;gap:8px">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            github.com/team/react-dashboard
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <div style="flex:1;padding:10px;background:var(--card);border:1px solid var(--border-xs);border-radius:8px;font-size:12px;color:var(--text-3);text-align:center"><div style="color:var(--green);font-size:18px;margin-bottom:4px">✓</div>Auth OK</div>
+            <div style="flex:1;padding:10px;background:var(--card);border:1px solid var(--border-xs);border-radius:8px;font-size:12px;color:var(--text-3);text-align:center"><div style="color:var(--ibm-lt);font-size:18px;margin-bottom:4px">⟳</div>Cloning</div>
+            <div style="flex:1;padding:10px;background:var(--card);border:1px solid var(--border-xs);border-radius:8px;font-size:12px;color:var(--text-3);text-align:center"><div style="font-size:18px;margin-bottom:4px;opacity:0.25">○</div>Analyze</div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-step reverse">
+        <div class="workflow-info">
+          <div class="workflow-num">02 — Analyze</div>
+          <h3 class="workflow-title">Deep AI-Powered Scanning</h3>
+          <p class="workflow-desc">IBM BOB AI scans every file, function, and module. It builds a semantic understanding of your entire codebase architecture.</p>
+          <ul class="workflow-bullets"><li>Semantic code understanding</li><li>Dependency graph generation</li><li>Architecture pattern detection</li></ul>
+        </div>
+        <div class="workflow-visual">
+          <div class="code-block"><span class="cm">// DevFlow AI Analysis Output</span>
+<span class="kw">const</span> <span class="fn">analysis</span> = {
+  <span class="str">"files"</span>: <span class="num">284</span>,
+  <span class="str">"complexity"</span>: <span class="str">"medium-high"</span>,
+  <span class="str">"patterns"</span>: [<span class="str">"MVC"</span>, <span class="str">"Repository"</span>],
+  <span class="str">"issues"</span>: { <span class="str">"critical"</span>: <span class="num">3</span>, <span class="str">"warn"</span>: <span class="num">12</span> },
+  <span class="str">"ibm_bob_confidence"</span>: <span class="num">0.94</span>
+}</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-info">
+          <div class="workflow-num">03 — Generate</div>
+          <h3 class="workflow-title">Auto-Generate Documentation</h3>
+          <p class="workflow-desc">Professional README files, inline documentation, and architectural diagrams — generated automatically from your code.</p>
+          <ul class="workflow-bullets"><li>Professional README generation</li><li>Inline code documentation</li><li>API endpoint documentation</li></ul>
+        </div>
+        <div class="workflow-visual">
+          <div style="background:var(--card);border:1px solid var(--border-xs);border-radius:8px;padding:16px">
+            <div style="font-family:var(--mono);font-size:14px;color:var(--cyan);margin-bottom:10px"># react-dashboard</div>
+            <div style="font-size:12px;color:var(--text-2);line-height:1.8">A production-ready React dashboard featuring real-time analytics, role-based access control, and IBM BOB AI integration...</div>
+            <div style="margin-top:12px;display:flex;gap:6px">
+              <span style="padding:2px 8px;border-radius:4px;background:rgba(36,161,72,0.15);color:var(--green);font-size:11px;font-family:var(--mono)">MIT</span>
+              <span style="padding:2px 8px;border-radius:4px;background:rgba(15,98,254,0.15);color:var(--ibm-lt);font-size:11px;font-family:var(--mono)">React 18</span>
+              <span style="padding:2px 8px;border-radius:4px;background:rgba(0,176,255,0.15);color:var(--cyan);font-size:11px;font-family:var(--mono)">TypeScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="text-center" style="margin-bottom:60px">
+      <div class="section-badge">Testimonials</div>
+      <h2 class="section-title">Loved by Developers</h2>
+    </div>
+    <div class="testimonials-grid stagger">
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"DevFlow AI cut our onboarding time from 3 weeks to 2 days. The AI-generated documentation is genuinely better than what we wrote ourselves."</p><div class="testimonial-author"><div class="avatar">SK</div><div><div class="author-name">Sarah Kim</div><div class="author-role">Engineering Lead · Stripe</div></div></div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"The Chat with Repository feature is mind-blowing. I asked it to explain a 5,000-line legacy codebase and it gave me a perfect architectural overview."</p><div class="testimonial-author"><div class="avatar">MR</div><div><div class="author-name">Marcus Reid</div><div class="author-role">Senior SDE · Amazon</div></div></div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"IBM BOB integration is seamless. The bug detection caught a critical security vulnerability we completely missed in 4 rounds of code review."</p><div class="testimonial-author"><div class="avatar">AP</div><div><div class="author-name">Ananya Patel</div><div class="author-role">CTO · TechStartup.io</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="text-center">
+      <div class="section-badge">Pricing</div>
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <p class="section-sub">Start free. Scale as your team grows.</p>
+    </div>
+    <div class="pricing-grid stagger">
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-price"><sup>$</sup>0</div>
+        <div class="pricing-period">/ month · Forever free</div>
+        <ul class="pricing-features"><li>5 repository analyses/month</li><li>README generation</li><li>Basic bug detection</li><li>Community support</li></ul>
+        <button class="btn-pricing" onclick="showPage('signup')">Get Started Free</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tier">Professional</div>
+        <div class="pricing-price"><sup>$</sup>29</div>
+        <div class="pricing-period">/ month · Billed monthly</div>
+        <ul class="pricing-features"><li>Unlimited repositories</li><li>AI Chat with codebase</li><li>Advanced bug detection</li><li>PR review automation</li><li>Priority IBM BOB access</li><li>Team collaboration (5 seats)</li></ul>
+        <button class="btn-pricing" onclick="showPage('signup')">Start Free Trial</button>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price" style="font-size:36px;letter-spacing:-1px">Custom</div>
+        <div class="pricing-period">Contact us for pricing</div>
+        <ul class="pricing-features"><li>Everything in Pro</li><li>SSO & SAML</li><li>On-premise deployment</li><li>Custom IBM BOB models</li><li>SLA guarantee</li><li>Dedicated success manager</li></ul>
+        <button class="btn-pricing">Talk to Sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-box">
+      <div class="ibm-badge" style="margin-bottom:26px">🏆 IBM BOB Hackathon 2026 · Team Alpha Ninjas</div>
+      <h2 class="cta-title">Start Building Smarter Today</h2>
+      <p class="cta-sub">Join thousands of developers who use DevFlow AI to understand, document, and improve their code.</p>
+      <div class="cta-actions">
+        <button class="btn-primary" onclick="showPage('signup')">Get Started Free →</button>
+        <button class="btn-secondary" onclick="showPage('dashboard')">See the Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">DevFlow<span style="color:var(--cyan)"> AI</span></span>
+        <p>Your AI-powered development partner. Built with IBM BOB for the future of software engineering.</p>
+        <div class="ibm-credit"><span class="ibm-logo">IBM</span> BOB Hackathon 2026 · Team Alpha Ninjas</div>
+      </div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li><li><a href="#">Changelog</a></li><li><a href="#">Roadmap</a></li></ul></div>
+      <div class="footer-col"><h4>Developers</h4><ul><li><a href="#">Documentation</a></li><li><a href="#">API Reference</a></li><li><a href="#">GitHub</a></li><li><a href="#">Status</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DevFlow AI · Team Alpha Ninjas</span>
+      <div class="ibm-credit"><span class="ibm-logo">IBM</span> BOB Powered</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════ LOGIN PAGE ══════════════════════ -->
+<div class="page" id="page-login">
+  <div class="auth-page">
+    <div class="auth-glow"></div>
+    <div class="auth-card scale-in">
+      <div class="auth-logo">
+        <div class="logo-mark" style="margin:0 auto 16px;width:46px;height:46px;font-size:16px">DF</div>
+      </div>
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-sub">Sign in to DevFlow AI</p>
+      <button class="oauth-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#ccc" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Continue with GitHub
+      </button>
+      <button class="oauth-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+      <div class="divider">or</div>
+      <div class="form-group"><label class="form-label">Email</label><input id="login-email" class="form-input" type="email" placeholder="you@company.com"></div>
+      <div class="form-group">
+        <label class="form-label" style="display:flex;justify-content:space-between"><span>Password</span><a class="link" style="font-size:12px">Forgot?</a></label>
+        <input id="login-password" class="form-input" type="password" placeholder="••••••••">
+      </div>
+      <button id="login-btn" class="btn-full" onclick="handleLogin()">Sign In →</button>
+      <p class="auth-footer">Don't have an account? <a class="link" onclick="showPage('signup')">Sign up free</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SIGNUP PAGE ══════════════════════ -->
+<div class="page" id="page-signup">
+  <div class="auth-page">
+    <div class="auth-glow"></div>
+    <div class="auth-card scale-in">
+      <div class="auth-logo">
+        <div class="logo-mark" style="margin:0 auto 16px;width:46px;height:46px;font-size:16px">DF</div>
+      </div>
+      <h1 class="auth-title">Create account</h1>
+      <p class="auth-sub">Join DevFlow AI — free forever to start</p>
+      <button class="oauth-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#ccc" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Sign up with GitHub
+      </button>
+      <div class="divider">or</div>
+      <div class="form-group"><label class="form-label">Full Name</label><input id="signup-name" class="form-input" type="text" placeholder="Nagavalli Kodidasu"></div>
+      <div class="form-group"><label class="form-label">Username</label><input id="signup-username" class="form-input" type="text" placeholder="nagavalli76"></div>
+      <div class="form-group"><label class="form-label">Email</label><input id="signup-email" class="form-input" type="email" placeholder="you@company.com"></div>
+      <div class="form-group"><label class="form-label">Password</label><input id="signup-password" class="form-input" type="password" placeholder="Min. 8 characters"></div>
+      <button id="signup-btn" class="btn-full" onclick="handleSignup()">Create Account →</button>
+      <p class="auth-footer">Already have an account? <a class="link" onclick="showPage('login')">Sign in</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ DASHBOARD PAGE ══════════════════════ -->
+<div class="page" id="page-dashboard">
+  <div class="app-layout">
+    <div class="sidebar">
+      <div class="sidebar-section">Main</div>
+      <div class="sidebar-item active" onclick="showPage('dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+      <div class="sidebar-item" onclick="showPage('ai')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        AI Assistant
+        <span class="sidebar-badge">New</span>
+      </div>
+      <div class="sidebar-item" onclick="showPage('workspace')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+        Workspace
+      </div>
+      <div class="sidebar-item" onclick="showPage('deploy')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        Deploy Center
+        <span class="sidebar-badge green">Live</span>
+      </div>
+      <div class="sidebar-item" onclick="showPage('analytics')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analytics
+      </div>
+      <div class="sidebar-section">Account</div>
+      <div class="sidebar-item" onclick="showPage('settings')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+        Settings
+      </div>
+      <div class="sidebar-item" onclick="showPage('landing')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="avatar" style="background:linear-gradient(135deg,#8a3ffc,#ee5396)">NK</div>
+          <div><div class="user-name">Nagavalli</div><div class="user-role">Alpha Ninjas · Pro</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="main-content fade-in">
+      <div class="page-topbar">
+        <div>
+          <div class="page-title">Dashboard</div>
+          <div class="page-title-sub">Welcome back, Nagavalli · IBM BOB Active</div>
+        </div>
+        <div class="topbar-actions">
+          <div class="icon-btn" style="position:relative">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <div class="notification-dot"></div>
+          </div>
+          <div class="icon-btn">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <button class="btn-sm" onclick="showPage('ai')">+ New Analysis</button>
+        </div>
+      </div>
+
+      <div class="metrics-row stagger">
+        <div class="metric-card">
+          <div class="metric-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>Repos Analyzed</div>
+          <div class="metric-value">247</div><div class="metric-delta delta-up">↑ 12 this week</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Docs Generated</div>
+          <div class="metric-value">1,834</div><div class="metric-delta delta-up">↑ 98 today</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Bugs Detected</div>
+          <div class="metric-value">512</div><div class="metric-delta delta-down">34 fixed today</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>AI Accuracy</div>
+          <div class="metric-value" style="color:var(--green)">94.2%</div><div class="metric-delta delta-up">↑ 1.3% this month</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Recent Repositories</div><span class="card-badge">5 active</span></div>
+            <div class="project-list">
+              <div class="project-item">
+                <div class="project-icon">RA</div>
+                <div style="flex:1;min-width:0"><div class="project-name">react-admin-dashboard</div><div class="project-meta"><span>284 files</span><span>·</span><span>TypeScript</span><span>·</span><span>2h ago</span></div></div>
+                <div class="project-status"><div class="status-dot green"></div><div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div></div>
+              </div>
+              <div class="project-item">
+                <div class="project-icon" style="background:linear-gradient(135deg,#009d9a,#00b0ff)">FA</div>
+                <div style="flex:1;min-width:0"><div class="project-name">fastapi-backend-service</div><div class="project-meta"><span>147 files</span><span>·</span><span>Python</span><span>·</span><span>5h ago</span></div></div>
+                <div class="project-status"><div class="status-dot blue"></div><div class="progress-bar"><div class="progress-fill" style="width:67%"></div></div></div>
+              </div>
+              <div class="project-item">
+                <div class="project-icon" style="background:linear-gradient(135deg,#8a3ffc,#ee5396)">ML</div>
+                <div style="flex:1;min-width:0"><div class="project-name">ml-pipeline-v2</div><div class="project-meta"><span>89 files</span><span>·</span><span>Python</span><span>·</span><span>1d ago</span></div></div>
+                <div class="project-status"><div class="status-dot amber"></div><div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-color:var(--border-sm);position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ibm),var(--cyan),var(--teal))"></div>
+            <div class="card-header">
+              <div class="card-title" style="display:flex;align-items:center;gap:8px"><span style="color:var(--cyan)">⚡</span> IBM BOB Recommendations</div>
+              <span style="font-size:11px;color:var(--cyan);font-family:var(--mono);display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);display:inline-block;animation:pulse 1.5s infinite"></span>Live</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="padding:12px;background:rgba(15,98,254,0.06);border:1px solid rgba(15,98,254,0.15);border-radius:var(--r-md);font-size:13px;color:var(--text-2)"><span style="color:var(--ibm-lt);font-weight:600">Critical:</span> Found potential SQL injection in <span style="font-family:var(--mono);color:var(--cyan)">auth/db.py:L142</span>. Recommend parameterized queries.</div>
+              <div style="padding:12px;background:rgba(241,194,27,0.06);border:1px solid rgba(241,194,27,0.15);border-radius:var(--r-md);font-size:13px;color:var(--text-2)"><span style="color:var(--amber);font-weight:600">Optimize:</span> <span style="font-family:var(--mono);color:var(--cyan)">UserList.tsx</span> re-renders 47 times/sec. Suggest <span style="font-family:var(--mono)">React.memo()</span>.</div>
+              <div style="padding:12px;background:rgba(36,161,72,0.06);border:1px solid rgba(36,161,72,0.15);border-radius:var(--r-md);font-size:13px;color:var(--text-2)"><span style="color:var(--green);font-weight:600">Documentation:</span> README generated for <span style="font-family:var(--mono);color:var(--cyan)">react-admin-dashboard</span> with 94% accuracy score.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Panel -->
+        <div>
+          <div class="ai-panel">
+            <div class="ai-panel-header">
+              <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--ibm),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff">B</div>
+              <div class="ai-panel-title">IBM BOB AI</div>
+              <div class="ai-status">Online</div>
+            </div>
+            <div class="ai-chips">
+              <div class="ai-chip" onclick="showPage('ai')">Explain code</div>
+              <div class="ai-chip" onclick="showPage('ai')">Fix bug</div>
+              <div class="ai-chip" onclick="showPage('ai')">Gen README</div>
+              <div class="ai-chip" onclick="showPage('ai')">Optimize</div>
+            </div>
+            <div class="ai-messages" id="dash-ai-messages">
+              <div class="msg"><div class="msg-avatar ai">B</div><div class="msg-bubble">👋 Hello! I'm IBM BOB, your AI development partner. I've analyzed your <strong>react-admin-dashboard</strong> repository. Found 3 issues and generated documentation. What would you like to explore?</div></div>
+              <div class="msg user"><div class="msg-avatar user">N</div><div class="msg-bubble">Explain the authentication module</div></div>
+              <div class="msg"><div class="msg-avatar ai">B</div><div class="msg-bubble">The auth module uses JWT tokens with a 24hr expiry. The <code style="background:rgba(0,176,255,0.1);padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:11px">useAuth</code> hook manages state via React Context. I found one potential vulnerability in the token refresh flow — want me to fix it?</div></div>
+            </div>
+            <div class="ai-input-row">
+              <input class="ai-input" placeholder="Ask IBM BOB anything..." id="dash-ai-input">
+              <button class="ai-send" onclick="sendDashMsg()">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <div class="card-header"><div class="card-title">Team Activity</div><span class="card-badge">Today</span></div>
+        <div class="activity-list">
+          <div class="activity-item"><div class="activity-icon blue">📄</div><div><div class="activity-text"><strong>IBM BOB</strong> generated README for <strong>react-admin-dashboard</strong> with 94.2% confidence score</div><div class="activity-time">2 minutes ago</div></div></div>
+          <div class="activity-item"><div class="activity-icon green">✓</div><div><div class="activity-text"><strong>Anurag</strong> resolved 3 critical bugs detected in <strong>fastapi-backend-service</strong></div><div class="activity-time">1 hour ago</div></div></div>
+          <div class="activity-item"><div class="activity-icon purple">🔍</div><div><div class="activity-text"><strong>IBM BOB</strong> completed deep analysis of <strong>ml-pipeline-v2</strong> — 89 files scanned</div><div class="activity-time">3 hours ago</div></div></div>
+          <div class="activity-item"><div class="activity-icon cyan">💬</div><div><div class="activity-text"><strong>Nagavalli</strong> chatted with repository about authentication architecture</div><div class="activity-time">5 hours ago</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ AI ASSISTANT PAGE ══════════════════════ -->
+<div class="page" id="page-ai" style="padding-top:0">
+  <div class="ai-page-layout">
+    <!-- App Sidebar -->
+    <div class="ai-sidebar-main sidebar">
+      <div class="sidebar-section">Navigation</div>
+      <div class="sidebar-item" onclick="showPage('dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+      <div class="sidebar-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        AI Assistant
+      </div>
+      <div class="sidebar-item" onclick="showPage('workspace')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+        Workspace
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="avatar" style="background:linear-gradient(135deg,#8a3ffc,#ee5396)">NK</div>
+          <div><div class="user-name">Nagavalli</div><div class="user-role">Pro Plan</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat History Sidebar -->
+    <div class="ai-sidebar-history">
+      <button class="btn-sm" style="width:100%;margin-bottom:18px">+ New Chat</button>
+      <div class="ai-history-section">Today</div>
+      <div class="ai-history-item active"><div class="ai-history-title">Explain auth module</div><div class="ai-history-meta">react-admin-dashboard</div></div>
+      <div class="ai-history-item"><div class="ai-history-title">Fix SQL injection bug</div><div class="ai-history-meta">fastapi-backend · 1h ago</div></div>
+      <div class="ai-history-item"><div class="ai-history-title">Generate README</div><div class="ai-history-meta">ml-pipeline-v2 · 3h ago</div></div>
+      <div class="ai-history-section">Yesterday</div>
+      <div class="ai-history-item"><div class="ai-history-title">Optimize useEffect hooks</div><div class="ai-history-meta">react-admin-dashboard</div></div>
+      <div class="ai-history-item"><div class="ai-history-title">Explain Kanban algo</div><div class="ai-history-meta">devflow-core</div></div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="ai-chat-area">
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--ibm),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0">B</div>
+        <div>
+          <div style="font-size:14px;font-weight:700">IBM BOB AI</div>
+          <div style="font-size:11px;color:var(--green);font-family:var(--mono);display:flex;align-items:center;gap:5px">
+            <span style="width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 1.5s infinite"></span>
+            Online · react-admin-dashboard
+          </div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px">
+          <span style="padding:4px 11px;border-radius:99px;background:rgba(15,98,254,0.1);border:1px solid rgba(15,98,254,0.2);font-size:11px;color:var(--ibm-lt);font-family:var(--mono)">ibm-bob-2.0</span>
+          <span style="padding:4px 11px;border-radius:99px;background:rgba(0,176,255,0.1);border:1px solid rgba(0,176,255,0.2);font-size:11px;color:var(--cyan);font-family:var(--mono)">RAG Active</span>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg">
+          <div class="chat-avatar ai">B</div>
+          <div class="chat-content">
+            <div class="chat-sender">IBM BOB</div>
+            <div class="chat-text">I've analyzed the <code style="background:rgba(0,176,255,0.1);padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:13px">react-admin-dashboard</code> repository. Here's what I found in the authentication module:</div>
+            <div class="chat-code">
+              <div class="chat-code-header">
+                <span>src/hooks/useAuth.tsx</span>
+                <span onclick="copyCode(this)">Copy</span>
+              </div>
+              <pre><span class="kw">const</span> <span class="fn">useAuth</span> = () => {
+  <span class="kw">const</span> [user, setUser] = useState&lt;<span class="fn">User</span> | <span class="kw">null</span>&gt;(null)
+  <span class="cm">// ⚠️ Token stored in localStorage — security risk</span>
+  <span class="kw">const</span> token = localStorage.getItem(<span class="str">'auth_token'</span>)
+
+  <span class="kw">const</span> <span class="fn">login</span> = <span class="kw">async</span> (credentials: <span class="fn">Credentials</span>) => {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">api</span>.post(<span class="str">'/auth/login'</span>, credentials)
+    <span class="cm">// ✓ JWT decoded correctly</span>
+    setUser(<span class="fn">decodeToken</span>(res.data.token))
+  }
+}</pre>
+            </div>
+            <div class="chat-text" style="margin-top:12px">Found <strong style="color:var(--red)">1 security issue</strong>: storing JWT in localStorage exposes it to XSS attacks. Recommend using httpOnly cookies instead.</div>
+            <div class="action-chips">
+              <div class="action-chip" onclick="addUserMsg('Fix this security issue')">Fix security issue</div>
+              <div class="action-chip" onclick="addUserMsg('Show me the full auth flow')">Show full auth flow</div>
+              <div class="action-chip" onclick="addUserMsg('Generate documentation for this file')">Generate docs</div>
+              <div class="action-chip" onclick="addUserMsg('Optimize this code')">Optimize code</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-msg user-msg">
+          <div class="chat-avatar user">N</div>
+          <div class="chat-content">
+            <div class="chat-sender">Nagavalli</div>
+            <div class="chat-text" style="border-radius:14px 14px 3px 14px;background:rgba(15,98,254,0.1);border-color:rgba(15,98,254,0.2);color:var(--text-1)">Fix this security issue please</div>
+          </div>
+        </div>
+
+        <!-- Typing Indicator — hidden by default -->
+        <div class="chat-msg" id="typing-indicator" style="display:none">
+          <div class="chat-avatar ai">B</div>
+          <div class="chat-content">
+            <div class="chat-sender">IBM BOB</div>
+            <div class="chat-text" style="display:inline-block;padding:14px 20px">
+              <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="chat-input-area">
+        <div class="shortcut-bar">
+          <button class="shortcut-btn">📁 Upload file</button>
+          <button class="shortcut-btn" onclick="addUserMsg('Explain this code')">🔍 Explain code</button>
+          <button class="shortcut-btn" onclick="addUserMsg('Find and fix bugs in the codebase')">🐛 Fix bug</button>
+          <button class="shortcut-btn" onclick="addUserMsg('Generate README for this repository')">📄 Gen README</button>
+          <button class="shortcut-btn" onclick="addUserMsg('Optimize performance of this module')">⚡ Optimize</button>
+        </div>
+        <div class="ai-input-box">
+          <textarea class="ai-textarea" placeholder="Ask IBM BOB anything about your codebase..." id="main-ai-input" rows="2"></textarea>
+          <div class="ai-input-footer">
+            <span style="font-size:12px;color:var(--text-3);font-family:var(--mono)">⏎ Send · ⇧⏎ New line</span>
+            <button class="ai-submit" onclick="sendMainMsg()">
+              <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ WORKSPACE PAGE ══════════════════════ -->
+<div class="page" id="page-workspace">
+  <div class="app-layout">
+    <div class="sidebar">
+      <div class="sidebar-section">Navigation</div>
+      <div class="sidebar-item" onclick="showPage('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</div>
+      <div class="sidebar-item" onclick="showPage('ai')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>AI Assistant</div>
+      <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>Workspace</div>
+      <div class="sidebar-footer"><div class="user-chip"><div class="avatar" style="background:linear-gradient(135deg,#8a3ffc,#ee5396)">NK</div><div><div class="user-name">Nagavalli</div><div class="user-role">Pro Plan</div></div></div></div>
+    </div>
+    <div class="main-content fade-in">
+      <div class="page-topbar">
+        <div><div class="page-title">Project Workspace</div><div class="page-title-sub">react-admin-dashboard · Kanban Board</div></div>
+        <div class="topbar-actions">
+          <button class="btn-sm" style="background:var(--surface);border:1px solid var(--border-xs);color:var(--text-2)">📋 Board</button>
+          <button class="btn-sm" style="background:var(--surface);border:1px solid var(--border-xs);color:var(--text-2)">📁 Files</button>
+          <button class="btn-sm" onclick="showPage('ai')">+ AI Task</button>
+        </div>
+      </div>
+      <div class="kanban-board stagger">
+        <div class="kanban-col">
+          <div class="kanban-col-header"><span class="kanban-col-title" style="color:var(--text-2)">Backlog</span><span class="kanban-count">4</span></div>
+          <div class="kanban-card"><div class="kanban-card-title">Refactor authentication module for security</div><div class="kanban-tags"><span class="kanban-tag tag-red">Critical</span><span class="kanban-tag tag-blue">Auth</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--red)"></div><div class="kanban-assignee">N</div></div></div>
+          <div class="kanban-card"><div class="kanban-card-title">Add rate limiting to API endpoints</div><div class="kanban-tags"><span class="kanban-tag tag-purple">Backend</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--amber)"></div><div class="kanban-assignee" style="background:linear-gradient(135deg,#009d9a,#00b0ff)">A</div></div></div>
+          <div class="kanban-card"><div class="kanban-card-title">IBM BOB: Optimize React re-renders in UserList</div><div class="kanban-tags"><span class="kanban-tag tag-cyan">AI Generated</span><span class="kanban-tag tag-blue">Frontend</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--ibm-lt)"></div><div class="kanban-assignee">N</div></div></div>
+          <button class="add-card-btn">+ Add card</button>
+        </div>
+        <div class="kanban-col" style="border-color:rgba(15,98,254,0.2)">
+          <div class="kanban-col-header"><span class="kanban-col-title" style="color:var(--ibm-lt)">In Progress</span><span class="kanban-count" style="background:rgba(15,98,254,0.15);color:var(--ibm-lt)">3</span></div>
+          <div class="kanban-card" style="border-color:rgba(15,98,254,0.18)"><div class="kanban-card-title">Generate comprehensive API documentation</div><div class="kanban-tags"><span class="kanban-tag tag-cyan">AI Task</span><span class="kanban-tag tag-green">Docs</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--green)"></div><div class="kanban-assignee" style="background:linear-gradient(135deg,var(--ibm),var(--cyan))">B</div></div></div>
+          <div class="kanban-card"><div class="kanban-card-title">Dashboard analytics charts implementation</div><div class="kanban-tags"><span class="kanban-tag tag-blue">Frontend</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--amber)"></div><div class="kanban-assignee">N</div></div></div>
+          <button class="add-card-btn">+ Add card</button>
+        </div>
+        <div class="kanban-col">
+          <div class="kanban-col-header"><span class="kanban-col-title" style="color:var(--purple)">Review</span><span class="kanban-count" style="background:rgba(138,63,252,0.15);color:var(--purple)">2</span></div>
+          <div class="kanban-card"><div class="kanban-card-title">IBM BOB code review: UserService.py</div><div class="kanban-tags"><span class="kanban-tag tag-cyan">AI Review</span><span class="kanban-tag tag-purple">Backend</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--ibm-lt)"></div><div class="kanban-assignee" style="background:linear-gradient(135deg,var(--ibm),var(--cyan))">B</div></div></div>
+          <div class="kanban-card"><div class="kanban-card-title">PR #47: Add dark mode support</div><div class="kanban-tags"><span class="kanban-tag tag-blue">Frontend</span><span class="kanban-tag tag-green">UI</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--green)"></div><div class="kanban-assignee" style="background:linear-gradient(135deg,#009d9a,#00b0ff)">A</div></div></div>
+          <button class="add-card-btn">+ Add card</button>
+        </div>
+        <div class="kanban-col">
+          <div class="kanban-col-header"><span class="kanban-col-title" style="color:var(--green)">Done</span><span class="kanban-count" style="background:rgba(36,161,72,0.15);color:var(--green)">6</span></div>
+          <div class="kanban-card" style="opacity:0.65"><div class="kanban-card-title">Generate README via IBM BOB AI</div><div class="kanban-tags"><span class="kanban-tag tag-green">Complete</span><span class="kanban-tag tag-cyan">AI</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--green)"></div><div class="kanban-assignee" style="background:linear-gradient(135deg,var(--ibm),var(--cyan))">B</div></div></div>
+          <div class="kanban-card" style="opacity:0.65"><div class="kanban-card-title">Repository analysis — 284 files scanned</div><div class="kanban-tags"><span class="kanban-tag tag-green">Complete</span></div><div class="kanban-card-footer"><div class="kanban-priority" style="background:var(--green)"></div><div class="kanban-assignee">N</div></div></div>
+          <button class="add-card-btn">+ Add card</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ DEPLOY PAGE ══════════════════════ -->
+<div class="page" id="page-deploy">
+  <div class="app-layout">
+    <div class="sidebar">
+      <div class="sidebar-section">Navigation</div>
+      <div class="sidebar-item" onclick="showPage('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</div>
+      <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>Deploy Center</div>
+      <div class="sidebar-footer"><div class="user-chip"><div class="avatar" style="background:linear-gradient(135deg,#8a3ffc,#ee5396)">NK</div><div><div class="user-name">Nagavalli</div><div class="user-role">Pro Plan</div></div></div></div>
+    </div>
+    <div class="main-content fade-in">
+      <div class="page-topbar">
+        <div><div class="page-title">Deployment Center</div><div class="page-title-sub">CI/CD Pipeline · react-admin-dashboard</div></div>
+        <div class="topbar-actions"><button class="btn-sm">▶ Deploy Now</button></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Deployment Status</div><span class="badge badge-green">Live</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="padding:18px;background:var(--card);border-radius:var(--r-md);text-align:center"><div style="font-family:var(--mono);font-size:30px;font-weight:700;color:var(--green)">✓</div><div style="font-size:12px;color:var(--text-3);margin-top:6px">Production</div><div style="font-size:11px;color:var(--text-3);font-family:var(--mono)">v2.4.1 · Live</div></div>
+            <div style="padding:18px;background:var(--card);border-radius:var(--r-md);text-align:center"><div style="font-family:var(--mono);font-size:30px;font-weight:700;color:var(--ibm-lt)">⟳</div><div style="font-size:12px;color:var(--text-3);margin-top:6px">Staging</div><div style="font-size:11px;color:var(--text-3);font-family:var(--mono)">v2.5.0-beta</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Pipeline Status</div><span class="badge badge-blue">Running</span></div>
+          <div class="pipeline-steps">
+            <div class="pipeline-step"><div class="pipeline-step-icon" style="background:rgba(36,161,72,0.15)">✓</div><div style="flex:1"><div style="font-size:13px;font-weight:600">Build</div><div style="font-size:12px;color:var(--text-3)">Completed in 2m 14s</div></div><span class="badge badge-green">Pass</span></div>
+            <div class="pipeline-step"><div class="pipeline-step-icon" style="background:rgba(36,161,72,0.15)">✓</div><div style="flex:1"><div style="font-size:13px;font-weight:600">Tests</div><div style="font-size:12px;color:var(--text-3)">124/124 passed</div></div><span class="badge badge-green">Pass</span></div>
+            <div class="pipeline-step"><div class="pipeline-step-icon" style="background:rgba(15,98,254,0.15)">⟳</div><div style="flex:1"><div style="font-size:13px;font-weight:600">IBM BOB Scan</div><div style="font-size:12px;color:var(--text-3)">Analyzing security...</div></div><span class="badge badge-blue">Running</span></div>
+            <div class="pipeline-step" style="opacity:0.5"><div class="pipeline-step-icon" style="background:rgba(80,140,255,0.08)">→</div><div style="flex:1"><div style="font-size:13px;font-weight:600">Deploy</div><div style="font-size:12px;color:var(--text-3)">Waiting for scan</div></div><span class="badge" style="background:rgba(80,140,255,0.08);color:var(--text-3)">Pending</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Deployment History</div></div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border-xs)"><span class="badge badge-green">v2.4.1</span><div style="flex:1"><div style="font-size:13px;font-weight:500">Hotfix: auth token refresh</div><div style="font-size:12px;color:var(--text-3);font-family:var(--mono)">2 hours ago · main · Nagavalli</div></div><span style="font-size:12px;color:var(--green)">✓ Live</span></div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border-xs)"><span class="badge badge-blue">v2.4.0</span><div style="flex:1"><div style="font-size:13px;font-weight:500">Feature: IBM BOB analytics dashboard</div><div style="font-size:12px;color:var(--text-3);font-family:var(--mono)">1 day ago · main · Anurag</div></div><span style="font-size:12px;color:var(--text-3)">Superseded</span></div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px 0"><span class="badge badge-purple">v2.3.9</span><div style="flex:1"><div style="font-size:13px;font-weight:500">Security: CSRF protection added</div><div style="font-size:12px;color:var(--text-3);font-family:var(--mono)">3 days ago · main · IBM BOB</div></div><span style="font-size:12px;color:var(--text-3)">Superseded</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ ANALYTICS PAGE ══════════════════════ -->
+<div class="page" id="page-analytics">
+  <div class="app-layout">
+    <div class="sidebar">
+      <div class="sidebar-section">Navigation</div>
+      <div class="sidebar-item" onclick="showPage('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</div>
+      <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Analytics</div>
+      <div class="sidebar-footer"><div class="user-chip"><div class="avatar" style="background:linear-gradient(135deg,#8a3ffc,#ee5396)">NK</div><div><div class="user-name">Nagavalli</div><div class="user-role">Pro Plan</div></div></div></div>
+    </div>
+    <div class="main-content fade-in">
+      <div class="page-topbar">
+        <div><div class="page-title">Analytics</div><div class="page-title-sub">Team productivity & AI usage insights</div></div>
+        <div class="topbar-actions">
+          <select style="background:var(--surface);border:1px solid var(--border-xs);color:var(--text-2);padding:7px 13px;border-radius:var(--r-sm);font-size:13px;outline:none;font-family:var(--body)">
+            <option>Last 30 days</option><option>Last 7 days</option><option>Last 90 days</option>
+          </select>
+        </div>
+      </div>
+      <div class="metrics-row stagger" style="margin-bottom:26px">
+        <div class="metric-card"><div class="metric-label">AI Queries</div><div class="metric-value">2,847</div><div class="metric-delta delta-up">↑ 23% vs last month</div></div>
+        <div class="metric-card"><div class="metric-label">Time Saved</div><div class="metric-value" style="color:var(--green)">184h</div><div class="metric-delta delta-up">Estimated</div></div>
+        <div class="metric-card"><div class="metric-label">Docs Written</div><div class="metric-value">1,834</div><div class="metric-delta delta-up">↑ 68% vs last month</div></div>
+        <div class="metric-card"><div class="metric-label">Bugs Caught</div><div class="metric-value" style="color:var(--ibm-lt)">512</div><div class="metric-delta delta-up">Before production</div></div>
+      </div>
+      <div class="analytics-grid stagger">
+        <div class="card">
+          <div class="card-header"><div class="card-title">AI Queries per Day</div></div>
+          <div class="chart-placeholder">
+            <div class="chart-bar-item" style="height:40%;animation-delay:0.1s"></div>
+            <div class="chart-bar-item" style="height:60%;animation-delay:0.12s"></div>
+            <div class="chart-bar-item" style="height:35%;animation-delay:0.14s"></div>
+            <div class="chart-bar-item" style="height:80%;animation-delay:0.16s"></div>
+            <div class="chart-bar-item" style="height:55%;animation-delay:0.18s"></div>
+            <div class="chart-bar-item" style="height:90%;animation-delay:0.2s"></div>
+            <div class="chart-bar-item" style="height:70%;animation-delay:0.22s"></div>
+            <div class="chart-bar-item" style="height:65%;animation-delay:0.24s"></div>
+            <div class="chart-bar-item" style="height:85%;animation-delay:0.26s"></div>
+            <div class="chart-bar-item" style="height:95%;animation-delay:0.28s"></div>
+            <div class="chart-bar-item" style="height:75%;animation-delay:0.3s"></div>
+            <div class="chart-bar-item" style="height:88%;animation-delay:0.32s"></div>
+            <div class="chart-bar-item" style="height:100%;animation-delay:0.34s;background:linear-gradient(180deg,var(--cyan),var(--teal))"></div>
+            <div class="chart-bar-item" style="height:82%;animation-delay:0.36s"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Feature Usage</div></div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px">
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text-2);margin-bottom:7px"><span>Repo Analysis</span><span style="color:var(--cyan)">42%</span></div><div style="height:6px;background:var(--border-xs);border-radius:99px"><div style="width:42%;height:100%;background:linear-gradient(90deg,var(--ibm),var(--cyan));border-radius:99px;animation:barRise 1s both"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text-2);margin-bottom:7px"><span>AI Chat</span><span style="color:var(--purple)">28%</span></div><div style="height:6px;background:var(--border-xs);border-radius:99px"><div style="width:28%;height:100%;background:linear-gradient(90deg,var(--purple),var(--magenta));border-radius:99px;animation:barRise 1s 0.1s both"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text-2);margin-bottom:7px"><span>README Gen</span><span style="color:var(--green)">18%</span></div><div style="height:6px;background:var(--border-xs);border-radius:99px"><div style="width:18%;height:100%;background:linear-gradient(90deg,var(--green),var(--teal));border-radius:99px;animation:barRise 1s 0.2s both"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text-2);margin-bottom:7px"><span>Bug Detection</span><span style="color:var(--red)">12%</span></div><div style="height:6px;background:var(--border-xs);border-radius:99px"><div style="width:12%;height:100%;background:linear-gradient(90deg,var(--red),#ff832b);border-radius:99px;animation:barRise 1s 0.3s both"></div></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Team Productivity Score</div><span class="badge badge-green">+23%</span></div>
+          <div style="display:flex;align-items:center;justify-content:center;height:170px">
+            <div style="text-align:center">
+              <div style="font-family:var(--display);font-size:78px;font-weight:900;background:linear-gradient(135deg,var(--ibm-lt),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;letter-spacing:-3px">87</div>
+              <div style="font-size:14px;color:var(--text-3);font-family:var(--mono);margin-top:4px">/100 · Excellent</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">IBM BOB Accuracy</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+            <div style="padding:13px;background:var(--card);border-radius:var(--r-md);display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--text-2)">Code Explanation</span><span style="font-family:var(--mono);color:var(--green);font-size:14px;font-weight:700">96.4%</span></div>
+            <div style="padding:13px;background:var(--card);border-radius:var(--r-md);display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--text-2)">README Quality</span><span style="font-family:var(--mono);color:var(--green);font-size:14px;font-weight:700">94.2%</span></div>
+            <div style="padding:13px;background:var(--card);border-radius:var(--r-md);display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--text-2)">Bug Detection</span><span style="font-family:var(--mono);color:var(--ibm-lt);font-size:14px;font-weight:700">89.7%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SETTINGS PAGE ══════════════════════ -->
+<div class="page" id="page-settings">
+  <div class="app-layout">
+    <div class="sidebar">
+      <div class="sidebar-section">Navigation</div>
+      <div class="sidebar-item" onclick="showPage('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</div>
+      <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+      <div class="sidebar-footer"><div class="user-chip"><div class="avatar" style="background:linear-gradient(135deg,#8a3ffc,#ee5396)">NK</div><div><div class="user-name">Nagavalli</div><div class="user-role">Pro Plan</div></div></div></div>
+    </div>
+    <div class="main-content fade-in">
+      <div class="page-topbar">
+        <div><div class="page-title">Settings</div><div class="page-title-sub">Manage your account and IBM BOB configuration</div></div>
+      </div>
+      <div class="settings-layout">
+        <div class="settings-nav">
+          <div class="settings-nav-item active">Profile</div>
+          <div class="settings-nav-item">IBM BOB API</div>
+          <div class="settings-nav-item">AI Models</div>
+          <div class="settings-nav-item">Notifications</div>
+          <div class="settings-nav-item">Team</div>
+          <div class="settings-nav-item">Billing</div>
+        </div>
+        <div>
+          <div class="settings-section">
+            <div class="settings-section-title">Profile</div>
+            <div class="settings-section-sub">Your personal information and preferences</div>
+            <div style="display:flex;align-items:center;gap:20px;margin-bottom:26px">
+              <div class="avatar" style="width:66px;height:66px;font-size:22px;background:linear-gradient(135deg,#8a3ffc,#ee5396)">NK</div>
+              <div>
+                <div style="font-weight:700;font-size:18px;margin-bottom:2px">Nagavalli Kodidasu</div>
+                <div style="font-size:13px;color:var(--text-3);font-family:var(--mono)">24P31A42G5 · ACETR23 · Alpha Ninjas</div>
+                <button class="btn-sm" style="margin-top:10px;background:var(--card);border:1px solid var(--border-xs);color:var(--text-2)">Change Avatar</button>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" value="Nagavalli Kodidasu"></div>
+              <div class="form-group"><label class="form-label">GitHub Username</label><input class="form-input" value="Nagavalli-76"></div>
+              <div class="form-group"><label class="form-label">Email</label><input class="form-input" value="nagavalli@acetr.ac.in"></div>
+              <div class="form-group"><label class="form-label">Institution</label><input class="form-input" value="ACET Surampalem"></div>
+            </div>
+            <button class="btn-full" style="max-width:160px;margin-top:10px">Save Changes</button>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-title">IBM BOB API Configuration</div>
+            <div class="settings-section-sub">Connect your IBM BOB credentials for AI-powered analysis</div>
+            <div class="settings-row">
+              <div><div class="settings-row-label">IBM BOB API Key</div><div class="settings-row-desc">Used for repository analysis and AI chat</div></div>
+              <div class="api-key-box" style="width:280px"><span class="api-key-val">••••••••••••••••••••••••</span><button class="copy-btn">Reveal</button></div>
+            </div>
+            <div class="settings-row">
+              <div><div class="settings-row-label">GitHub OAuth Token</div><div class="settings-row-desc">Access private repositories</div></div>
+              <span class="badge badge-green">Connected</span>
+            </div>
+            <div class="settings-row">
+              <div><div class="settings-row-label">IBM Cloud Region</div><div class="settings-row-desc">Processing region for your data</div></div>
+              <select style="background:var(--card);border:1px solid var(--border-xs);color:var(--text-2);padding:7px 12px;border-radius:var(--r-sm);font-size:13px;outline:none;font-family:var(--body)">
+                <option>us-east (N. Virginia)</option>
+                <option>eu-de (Frankfurt)</option>
+                <option>ap-south (Sydney)</option>
+              </select>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-title">Notifications</div>
+            <div class="settings-row"><div><div class="settings-row-label">AI Analysis Complete</div><div class="settings-row-desc">Notify when IBM BOB finishes analyzing a repo</div></div><div class="toggle"></div></div>
+            <div class="settings-row"><div><div class="settings-row-label">Bug Detected</div><div class="settings-row-desc">Alert when critical issues are found</div></div><div class="toggle"></div></div>
+            <div class="settings-row"><div><div class="settings-row-label">Team Activity</div><div class="settings-row-desc">Updates from your team members</div></div><div class="toggle off"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

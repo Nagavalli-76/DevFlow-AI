@@ -1,0 +1,305 @@
+generator client {
+  provider = "prisma-client-py"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── USERS & AUTH ───
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  username      String    @unique
+  passwordHash  String?
+  name          String
+  avatar        String?
+  role          Role      @default(MEMBER)
+  isVerified    Boolean   @default(false)
+  refreshToken  String?
+  githubId      String?   @unique
+  googleId      String?   @unique
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  teams         TeamMember[]
+  projects      Project[]
+  tasks         Task[]
+  messages      Message[]
+  notifications Notification[]
+  activityLogs  ActivityLog[]
+  files         File[]
+  apiKeys       APIKey[]
+  conversations AIConversation[]
+  analytics     Analytics[]
+  deployments   Deployment[]
+
+  @@map("users")
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+// ─── TEAMS ───
+model Team {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  avatar      String?
+  plan        Plan      @default(FREE)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  members     TeamMember[]
+  projects    Project[]
+
+  @@map("teams")
+}
+
+enum Plan {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  userId    String
+  teamId    String
+  role      Role     @default(MEMBER)
+  joinedAt  DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, teamId])
+  @@map("team_members")
+}
+
+// ─── PROJECTS ───
+model Project {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  status      ProjectStatus @default(ACTIVE)
+  repoUrl     String?
+  teamId      String?
+  ownerId     String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  owner       User          @relation(fields: [ownerId], references: [id])
+  team        Team?         @relation(fields: [teamId], references: [id])
+  tasks       Task[]
+  deployments Deployment[]
+  files       File[]
+  conversations AIConversation[]
+  activityLogs  ActivityLog[]
+  analytics     Analytics[]
+
+  @@map("projects")
+}
+
+enum ProjectStatus {
+  ACTIVE
+  ARCHIVED
+  COMPLETED
+  PAUSED
+}
+
+// ─── TASKS ───
+model Task {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  status      TaskStatus @default(TODO)
+  priority    Priority   @default(MEDIUM)
+  projectId   String
+  assigneeId  String?
+  dueDate     DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  project     Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assignee    User?      @relation(fields: [assigneeId], references: [id])
+
+  @@map("tasks")
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  REVIEW
+  DONE
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+// ─── AI CONVERSATIONS ───
+model AIConversation {
+  id        String    @id @default(cuid())
+  title     String    @default("New Conversation")
+  userId    String
+  projectId String?
+  model     String    @default("meta-llama/llama-3-3-70b-instruct:nitro")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project   Project?  @relation(fields: [projectId], references: [id])
+  messages  Message[]
+
+  @@map("ai_conversations")
+}
+
+model Message {
+  id             String         @id @default(cuid())
+  conversationId String
+  userId         String?
+  role           MessageRole
+  content        String
+  tokens         Int?
+  createdAt      DateTime       @default(now())
+
+  conversation   AIConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user           User?          @relation(fields: [userId], references: [id])
+
+  @@map("messages")
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+// ─── NOTIFICATIONS ───
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  body      String
+  isRead    Boolean          @default(false)
+  data      Json?
+  createdAt DateTime         @default(now())
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+enum NotificationType {
+  TASK_ASSIGNED
+  DEPLOYMENT_SUCCESS
+  DEPLOYMENT_FAILED
+  TEAM_INVITE
+  MENTION
+  AI_COMPLETE
+  SYSTEM
+}
+
+// ─── ACTIVITY LOGS ───
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String
+  projectId String?
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  project   Project? @relation(fields: [projectId], references: [id])
+
+  @@map("activity_logs")
+}
+
+// ─── ANALYTICS ───
+model Analytics {
+  id        String   @id @default(cuid())
+  userId    String
+  projectId String?
+  event     String
+  data      Json
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  project   Project? @relation(fields: [projectId], references: [id])
+
+  @@map("analytics")
+}
+
+// ─── DEPLOYMENTS ───
+model Deployment {
+  id          String           @id @default(cuid())
+  projectId   String
+  userId      String
+  status      DeploymentStatus @default(PENDING)
+  environment String           @default("production")
+  branch      String           @default("main")
+  commitHash  String?
+  logs        String?
+  url         String?
+  duration    Int?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  project     Project          @relation(fields: [projectId], references: [id])
+  user        User             @relation(fields: [userId], references: [id])
+
+  @@map("deployments")
+}
+
+enum DeploymentStatus {
+  PENDING
+  BUILDING
+  SUCCESS
+  FAILED
+  CANCELLED
+}
+
+// ─── FILES ───
+model File {
+  id         String   @id @default(cuid())
+  name       String
+  url        String
+  size       Int
+  mimeType   String
+  projectId  String?
+  uploadedBy String
+  createdAt  DateTime @default(now())
+
+  project    Project? @relation(fields: [projectId], references: [id])
+  user       User     @relation(fields: [uploadedBy], references: [id])
+
+  @@map("files")
+}
+
+// ─── API KEYS ───
+model APIKey {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  key       String   @unique
+  lastUsed  DateTime?
+  expiresAt DateTime?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("api_keys")
+}
