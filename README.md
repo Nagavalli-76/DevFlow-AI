@@ -3,12 +3,6 @@
 
 > An AI-augmented full-stack development workspace that supercharges developer teams with IBM watsonx.ai — built for the **IBM BOB Hackathon 2026** by Team **Alpha Ninjas**.
 
-<br/>
-
-[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Netlify-00ad9f?style=for-the-badge)](https://devflow-ai-alphaninjas.netlify.app)
-
-</div>
-
 ---
 
 ## 👥 Team Alpha Ninjas — IBM BOB Hackathon 2026
@@ -160,7 +154,7 @@ The frontend ships with a **built-in mock backend** using `localStorage`. Perfec
 3. Click **Get Started** → fill the form → click **Create Account**
 4. You're in! All data persists in your browser across sessions.
 
-> Or simply visit the **[Live Netlify Demo ↗](https://devflow-ai-alphaninjas.netlify.app)**
+> Or simply visit the **[Live Netlify Demo ↗](https://devflow-ai-ibm-bob.netlify.app/)**
 
 ---
 
